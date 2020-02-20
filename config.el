@@ -64,8 +64,6 @@
 
 ;; custom keymaps
 (map! :nv ";" #'evil-ex)
-(map! :map evil-snipe-override-mode-map ";" #'evil-ex)
-(map! :map evil-snipe-override-local-mode-map ";" #'evil-ex)
 (map! :map evil-snipe-parent-transient-map ";" #'evil-ex)
 (map! :nv ":" #'evil-snipe-repeat)
 
@@ -272,6 +270,8 @@ Git gutter:
 (use-package flymd
   :config
   (setq flymd-output-directory temporary-file-directory))
+
+(setq server-auth-dir "~/.emacs.d/server")
 
 (use-package impatient-mode)
 
