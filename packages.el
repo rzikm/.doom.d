@@ -66,6 +66,7 @@
 (package! markdown-mode)
 (package! flymd)
 (package! impatient-mode)
+(package! edit-server)
 (package! which-key)
 (package! iedit)
 (package! yaml-mode)

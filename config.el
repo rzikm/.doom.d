@@ -414,5 +414,7 @@ _p_rev       _m_ine               _=_: mine/other       _r_esolve
 
 (evil-put-command-property 'evil-yank-line :motion 'evil-line)
 
+(edit-server-start)
+
 (load! "init-font")
 (load! "init-powerline")
