@@ -19,7 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "monospace" :size 14))
+(setq doom-font (font-spec :family "Fira Code Regular" :size 12))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -60,8 +60,7 @@
 (setq backup-directory-alist `(("." . "~/.backups")))
 (setq-default fill-column 100)
 (setq column-enforce-column 100)
-
-(setq powerline-default-separator 'arrow)
+(setq display-line-numbers-type 'relative)
 
 ;; custom keymaps
 (map! :nv ";" #'evil-ex)
@@ -71,16 +70,6 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (put 'dired-find-alternate-file 'disabled nil)
 
-;;; If `display-line-numbers-mode' is available (only in Emacs 26),
-;;; use it! Otherwise, install and run nlinum-relative.
-(if (functionp 'display-line-numbers-mode)
-    (and (global-display-line-numbers-mode t)
-         (setq display-line-numbers-type 'relative))
-  (use-package nlinum-relative
-    :config
-    (nlinum-relative-setup-evil)
-    (setq nlinum-relative-redisplay-delay 0)
-    (nlinum-relative-mode 1)))
 
 (defhydra hydra-git-gutter (:body-pre (git-gutter-mode 1)
                             :hint nil)
