@@ -123,22 +123,10 @@ Git gutter:
   (setq org-startup-indented t)
   (setq org-indent-indentation-per-level 1))
 
-(use-package org-evil
-  :config
-  (evil-define-minor-mode-key 'normal 'org-evil-heading-mode
-    "@" 'org-refile)
-  (evil-define-minor-mode-key 'normal 'org-evil-heading-mode
-    "#" 'org-add-note))
-
 (use-package evil-easymotion
   :config
   (evilem-default-keybindings "SPC")
   (setq avy-keys (number-sequence ?a ?z)))
-
-(use-package org-bullets
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-  (setq org-bullets-bullet-list '("•")))
 
 (use-package pos-tip)
 
@@ -158,11 +146,6 @@ Git gutter:
   (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
   (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort))
 
-;; (use-package company-box
-;;    :hook (company-mode . company-box-mode))
-
-(use-package counsel)
-
 (use-package swiper
   :commands swiper
   :bind ("C-s" . counsel-grep-or-swiper)
@@ -177,74 +160,7 @@ Git gutter:
   :init
   (company-quickhelp-mode t))
 
-(use-package web-mode
-  :mode
-  ("\\.html$" . web-mode)
-  ("\\.php$" . web-mode)
-  ("\\.css$" . web-mode)
-  :init
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-code-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq js-indent-level 2)
-  (setq web-mode-enable-auto-pairing t)
-  (setq web-mode-enable-auto-expanding t)
-  (setq web-mode-enable-css-colorization t)
-  (add-hook 'web-mode-hook 'electric-pair-mode))
-
-(use-package web-beautify
-  :commands (web-beautify-css
-             web-beautify-css-buffer
-             web-beautify-html
-             web-beautify-html-buffer
-             web-beautify-js
-             web-beautify-js-buffer))
-
-
-(defun surround-html (start end tag)
-   "Wraps the specified region (or the current 'symbol / word'
- with a properly formatted HTML tag."
-   (interactive "r\nsTag: " start end tag)
-   (save-excursion
-     (narrow-to-region start end)
-     (goto-char (point-min))
-     (insert (format "<%s>" tag))
-     (goto-char (point-max))
-     (insert (format "</%s>" tag))
-     (widen)))
-
-(use-package emmet-mode
-  :diminish (emmet-mode . "ε")
-  :bind* (("C-)" . emmet-next-edit-point)
-          ("C-(" . emmet-prev-edit-point))
-  :commands (emmet-mode
-             emmet-next-edit-point
-             emmet-prev-edit-point)
-  :init
-  (setq emmet-indentation 2)
-  (setq emmet-move-cursor-between-quotes t)
-  :config
-  ;; Auto-start on any markup modes
-  (add-hook 'sgml-mode-hook 'emmet-mode)
-  (add-hook 'web-mode-hook 'emmet-mode))
-
-
-(use-package nginx-mode
-  :commands (nginx-mode))
-
-
-(use-package json-mode
-  :mode "\\.json\\'"
-  :config
-  (bind-key "{" #'paredit-open-curly json-mode-map)
-  (bind-key "}" #'paredit-close-curly json-mode-map))
-
-(use-package company-web
-  :init
-  (add-to-list `company-backends `company-web-html))
-
-(use-package flycheck
-  :ensure)
+(use-package flycheck)
 
 (use-package yasnippet
   :defer t
@@ -345,19 +261,6 @@ Git gutter:
 (define-key yas-keymap [(control tab)] 'yas-next-field)
 (define-key yas-keymap (kbd "C-g") 'abort-company-or-yas)
 
-(use-package ag
-  :commands (ag ag-project)
-  :config
-  (add-hook 'ag-mode-hook
-            (lambda ()
-              (wgrep-ag-setup)
-              (define-key ag-mode-map (kbd "n") 'evil-search-next)
-              (define-key ag-mode-map (kbd "N") 'evil-search-previous)))
-  (setq ag-executable "/usr/local/bin/ag")
-  (setq ag-highlight-search t)
-  (setq ag-reuse-buffers t)
-  (setq ag-reuse-window t))
-
 (use-package cmake-mode)
 
 (use-package markdown-mode
@@ -385,11 +288,6 @@ Git gutter:
            (set-buffer (markdown tmpname)) ; the function markdown is in `markdown-mode.el'
            (buffer-string)))
        (current-buffer)))
-
-(use-package ox-reveal
-  :config
-  (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
-  (setq org-reveal-mathjax t))
 
 (use-package which-key
   :config
@@ -475,8 +373,6 @@ _p_rev       _m_ine               _=_: mine/other       _r_esolve
     ("q" nil "cancel" :color blue)))
 
 (use-package color-theme-sanityinc-tomorrow)
-
-(use-package ranger)
 
 (use-package lsp-mode
   :init (setq lsp-keymap-prefix "C-l")
