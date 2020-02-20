@@ -64,7 +64,10 @@
 
 ;; custom keymaps
 (map! :nv ";" #'evil-ex)
-(map! :nv ":" #'evil-repeat-find-char)
+(map! :map evil-snipe-override-mode-map ";" #'evil-ex)
+(map! :map evil-snipe-override-local-mode-map ";" #'evil-ex)
+(map! :map evil-snipe-parent-transient-map ";" #'evil-ex)
+(map! :nv ":" #'evil-snipe-repeat)
 
 ;; simple ask
 (fset 'yes-or-no-p 'y-or-n-p)
