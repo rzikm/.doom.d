@@ -382,6 +382,7 @@ _p_rev       _m_ine               _=_: mine/other       _r_esolve
          (php-mode . lsp)
          (js2-mode . lsp)
          (powershell-mode . lsp)
+         (c-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
 
@@ -412,9 +413,53 @@ _p_rev       _m_ine               _=_: mine/other       _r_esolve
   :config
   (which-key-posframe-mode))
 
+ (after! mu4e
+  (setq! mu4e-maildir (expand-file-name "~/.mail/gmail") ; the rest of the mu4e folders are RELATIVE to this one
+         mu4e-get-mail-command "mbsync -a"
+         mu4e-index-update-in-background t
+         mu4e-compose-signature-auto-include t
+         mu4e-use-fancy-chars t
+         mu4e-view-show-addresses t
+         mu4e-view-show-images t
+         mu4e-compose-format-flowed t
+         ;mu4e-compose-in-new-frame t
+         mu4e-change-filenames-when-moving t ;; http://pragmaticemacs.com/emacs/fixing-duplicate-uid-errors-when-using-mbsync-and-mu4e/
+         mu4e-maildir-shortcuts
+         '( ("/Inbox" . ?i)
+            ("/Archive" . ?a)
+            ("/Drafts" . ?d)
+            ("/Deleted Items" . ?t)
+            ("/Starred" . ?S)
+            ("/Sent Items" . ?s))
+
+         ;; Message Formatting and sending
+         message-send-mail-function 'smtpmail-send-it
+         message-citation-line-format "On %a %d %b %Y at %R, %f wrote:\n"
+         message-citation-line-function 'message-insert-formatted-citation-line
+         message-kill-buffer-on-exit t
+
+         ;; Org mu4e
+         org-mu4e-convert-to-html t
+         ))
+(set-email-account! "r.zikmund.rz@gmail.com"
+                    '((user-mail-address      . "r.zikmund.rz@gmail.com")
+                      (user-full-name         . "Radek Zikmund")
+                      (smtpmail-smtp-server   . "imap.gmail.com")
+                      (smtpmail-smtp-service  . 587)
+                      (smtpmail-stream-type   . starttls)
+                      (smtpmail-debug-info    . t)
+                      (mu4e-drafts-folder     . "/Drafts")
+                      (mu4e-refile-folder     . "/Archive")
+                      (mu4e-sent-folder       . "/Sent Items")
+                      (mu4e-trash-folder      . "/Deleted Items")
+                      (mu4e-update-interval   . 1800)
+                      ;(mu4e-sent-messages-behavior . 'delete)
+                      )
+                    nil)
+
 (evil-put-command-property 'evil-yank-line :motion 'evil-line)
 
 (edit-server-start)
 
-(load! "init-font")
-(load! "init-powerline")
+;(load! "init-font")
+;(load! "init-powerline")

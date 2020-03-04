@@ -71,7 +71,6 @@
 (package! iedit)
 (package! yaml-mode)
 (package! powershell)
-(package! counsel)
 (package! column-enforce-mode)
 (package! smerge-mode)
 (package! color-theme-sanityinc-tomorrow)
