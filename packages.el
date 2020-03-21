@@ -58,6 +58,7 @@
 (package! evil-collection)
 (package! pos-tip)
 (package! company)
+(package! counsel)
 (package! company-quickhelp)
 (package! company-web)
 (package! yasnippet)
