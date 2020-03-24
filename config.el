@@ -461,5 +461,4 @@ _p_rev       _m_ine               _=_: mine/other       _r_esolve
 
 (edit-server-start)
 
-;(load! "init-font")
-;(load! "init-powerline")
+(load! "local.el")
