@@ -77,7 +77,5 @@
 (package! color-theme-sanityinc-tomorrow)
 (package! dap-mode)
 (package! multi-term)
-(package! helm-posframe)
-(package! which-key-posframe)
 (package! powerline)
 (package! powerline-evil)

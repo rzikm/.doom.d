@@ -400,19 +400,6 @@ _p_rev       _m_ine               _=_: mine/other       _r_esolve
       (setq multi-term-program "powershell.exe")
     ))
 
-(use-package helm-posframe
-  :config
-  (progn
-    (helm-posframe-enable)
-    (setq helm-posframe-poshandler 'posframe-poshandler-frame-center)
-    (setq helm-posframe-parameters
-          '((left-fringe . 10)
-            (right-fringe . 10)))))
-
-(use-package which-key-posframe
-  :config
-  (which-key-posframe-mode))
-
  (after! mu4e
   (setq! mu4e-maildir (expand-file-name "~/.mail/gmail") ; the rest of the mu4e folders are RELATIVE to this one
          mu4e-get-mail-command "mbsync -a"
