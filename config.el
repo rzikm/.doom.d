@@ -71,6 +71,14 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (put 'dired-find-alternate-file 'disabled nil)
 
+;; Switch to the window when opening a file in already openned frame
+(defun px-raise-frame-and-give-focus ()
+  (when window-system
+    (raise-frame)
+    (x-focus-frame (selected-frame))
+    (set-mouse-pixel-position (selected-frame) 4 4)
+    ))
+(add-hook 'server-switch-hook 'px-raise-frame-and-give-focus)
 
 (defhydra hydra-git-gutter (:body-pre (git-gutter-mode 1)
                             :hint nil)
