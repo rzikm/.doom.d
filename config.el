@@ -8,6 +8,9 @@
 (setq user-full-name "Radek Zikmund")
 (setq user-mail-address "r.zikmund.rz@gmail.com")
 
+(setq server-auth-dir "~/.emacs.d/server")
+
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
 ;;
@@ -231,8 +234,6 @@
 ;; (use-package flymd
 ;;   :config
 ;;   (setq flymd-output-directory temporary-file-directory))
-
-;; (setq server-auth-dir "~/.emacs.d/server")
 
 ;; (use-package impatient-mode)
 
