@@ -8,8 +8,6 @@
 (setq user-full-name "Radek Zikmund")
 (setq user-mail-address "r.zikmund.rz@gmail.com")
 
-(setq server-auth-dir "~/.emacs.d/server")
-
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -54,6 +52,9 @@
 ;;
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
+
+(setq server-auth-dir "~/.emacs.d/server")
+(setq server-socket-dir "~/.emacs.d/server")
 
 (setq inhibit-splash-screen t
       inhibit-startup-message t
